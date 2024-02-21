@@ -1,0 +1,1 @@
+df_fin_phrase = pd.read_csv('../../Data/Raw/fin_phrase_bank.csv')
