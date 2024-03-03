@@ -1,3 +1,12 @@
+# Credentials
+
+For security reason the key for the API is not uploaded in the repository.
+
+the file with the credential must be added in these two location to work:
+
+- app/cred.cfg
+
+
 # Financial Sentiment Analysis Project Documentation
 
 ## Raw Data Overview
