@@ -1,9 +1,9 @@
 import streamlit as st
-import torch
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
 from transformers import pipeline
-import pandas as pd
-import glob
+from financial_news_api import NewApis
+
+financial_news = NewApis()
 
 # Load the tokenizer and the model
 
@@ -13,33 +13,47 @@ model = AutoModelForSequenceClassification.from_pretrained("ProsusAI/finbert")
 pipe = pipeline("text-classification", model=model, tokenizer=tokenizer)
 
 
-@st.cache(allow_output_mutation=True)
+@st.cache_resource()
 def load_model():
     model = AutoModelForSequenceClassification.from_pretrained("ProsusAI/finbert")
-    pipe = pipeline("text-classification", model=model, tokenizer=tokenizer)
-    return pipe
+    return model
 
 
 # Load the model
 model = load_model()
+pipe = pipeline("text-classification", model=model, tokenizer=tokenizer)
 
 # Define the Streamlit app
-st.title("New Sentiment App")
+st.title("Financial Sentiment App developed by Juan, Ciaran and John")
 
 
 tweet = st.text_area("Enter a tweet:", "")
 
-if st.button("Predict"):
-    # Preprocess the tweet
-    inputs = tokenizer(tweet, return_tensors="pt")
 
-    # Get model's prediction
-    outputs = model(**inputs)
-    probs = torch.nn.functional.softmax(outputs.logits, dim=-1)
-    prediction = torch.argmax(probs)
+def get_news_api():
+    df = financial_news.fetch_yahoo_news()
+    df["label"] = df["description"].apply(lambda x: pipe(x)[0].get("label"))
+    df["score"] = df["description"].apply(lambda x: pipe(x)[0].get("score"))
+    st.dataframe(df)
 
-    # Display the prediction
-    if prediction == 0:
-        st.write("The tweet has a positive sentiment.")
-    else:
-        st.write("The tweet has a negative sentiment.")
+
+selection = st.radio(
+    "Select option: ",
+    [
+        "Get News of the Day Sentiment",
+        "Provide a Financial Statement",
+    ],
+)
+
+if selection == "Provide a Financial Statement":
+    button_clicked = st.button("Submit")
+    if button_clicked and tweet is not None:
+        outputs = pipe(tweet)
+
+        # Display the prediction
+        st.write(f"The Sentiment is: {outputs[0].get('label')}")
+        st.write(f"The Confidence is: {outputs[0].get('score')}")
+if selection == "Get News of the Day Sentiment":
+    button_clicked = st.button("Submit")
+    if button_clicked and tweet is not None:
+        get_news_api()
