@@ -1,3 +1,7 @@
 *:*Zone.Identifier
 .DS_Store
 .ipynb_checkpoints
+__pycache__
+cred.cfg
+best_model_state.bin
+ sentiment_model.pt
