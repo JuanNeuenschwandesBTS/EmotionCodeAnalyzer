@@ -20,16 +20,17 @@ Think of any pre-processing functions (
 """
 
 import pandas as pd
-from datasets import load_dataset
+#from datasets import load_dataset
 import nltk
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
 import re
 
-nltk.download("punkt")
-nltk.download("stopwords")
-nltk.download("wordnet")
+#! only uncommend if modules are not installed
+#* nltk.download("punkt")
+#* nltk.download("stopwords")
+#* nltk.download("wordnet")
 
 
 def clean_text(text):
@@ -110,8 +111,8 @@ sentiment = {0: "Negative", 1: "Neutral", 2: "Positive"}
 
 
 if __name__ == "__main__":
-    dataset = load_dataset("financial_phrasebank", "sentences_50agree")
-    df_fin_phrase = pd.DataFrame(dataset["train"])
+    # dataset = load_dataset("financial_phrasebank", "sentences_50agree")
+    # df_fin_phrase = pd.DataFrame(dataset["train"])
     df_tweet_topic_train = pd.read_csv("../Data/Raw/topic_train.csv")
     df_tweet_topic_valid = pd.read_csv("../Data/Raw/topic_valid.csv")
     df_fin_phrase = pd.read_csv("../Data/Raw/fin_phrase_bank.csv")
