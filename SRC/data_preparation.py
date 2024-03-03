@@ -21,7 +21,6 @@ Think of any pre-processing functions (
 
 import pandas as pd
 #from datasets import load_dataset
-import nltk
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
