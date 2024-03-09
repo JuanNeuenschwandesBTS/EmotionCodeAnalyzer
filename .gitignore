@@ -4,3 +4,5 @@
 __pycache__
 cred.cfg
 best_model_state.bin
+venv/*
+venv
