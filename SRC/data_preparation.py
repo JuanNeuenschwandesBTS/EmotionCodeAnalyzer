@@ -20,16 +20,21 @@ Think of any pre-processing functions (
 """
 
 import pandas as pd
-#from datasets import load_dataset
+
+# from datasets import load_dataset
+import nltk
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
 import re
 
+nltk.download("wordnet")
+nltk.download("stopwords")
+nltk.download("punkt")
 #! only uncommend if modules are not installed
-#* nltk.download("punkt")
-#* nltk.download("stopwords")
-#* nltk.download("wordnet")
+# * nltk.download("punkt")
+# * nltk.download("stopwords")
+# * nltk.download("wordnet")
 
 
 def clean_text(text):
@@ -112,9 +117,9 @@ sentiment = {0: "Negative", 1: "Neutral", 2: "Positive"}
 if __name__ == "__main__":
     # dataset = load_dataset("financial_phrasebank", "sentences_50agree")
     # df_fin_phrase = pd.DataFrame(dataset["train"])
-    df_tweet_topic_train = pd.read_csv("../Data/Raw/topic_train.csv")
-    df_tweet_topic_valid = pd.read_csv("../Data/Raw/topic_valid.csv")
-    df_fin_phrase = pd.read_csv("../Data/Raw/fin_phrase_bank.csv")
+    df_tweet_topic_train = pd.read_csv("Data/Raw/topic_train.csv")
+    df_tweet_topic_valid = pd.read_csv("Data/Raw/topic_valid.csv")
+    df_fin_phrase = pd.read_csv("Data/Raw/fin_phrase_bank.csv")
     df_tweet_topic_train["clean_text"] = df_tweet_topic_train["text"].apply(
         preprocess_text
     )
@@ -131,11 +136,11 @@ if __name__ == "__main__":
     df_fin_phrase["sentiment"] = df_fin_phrase["label"].apply(lambda x: sentiment[x])
 
     writeDataToDisk(
-        "../Data/Prepared/CleanDatasets/Tweet_valid_clean.csv", df_tweet_topic_valid
+        "Data/Prepared/CleanDatasets/Tweet_valid_clean.csv", df_tweet_topic_valid
     )
     writeDataToDisk(
-        "../Data/Prepared/CleanDatasets/Tweet_train_clean.csv", df_tweet_topic_train
+        "Data/Prepared/CleanDatasets/Tweet_train_clean.csv", df_tweet_topic_train
     )
     writeDataToDisk(
-        "../Data/Prepared/CleanDatasets/fin_phrase_bank_clean.csv", df_fin_phrase
+        "Data/Prepared/CleanDatasets/fin_phrase_bank_clean.csv", df_fin_phrase
     )
