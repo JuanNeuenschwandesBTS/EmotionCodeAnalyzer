@@ -23,13 +23,3 @@ class NewApis:
             return df
         else:
             print("Failed to fetch news:", response.text)
-
-
-# =============================================================================
-#
-# if __name__ == "__main__":
-#     # Replace 'YOUR_API_KEY' with your actual Yahoo API key
-#     df = fetch_yahoo_news()
-#     output_filename = "../Data/Prepared/CleanDatasets/financial_news_info.csv"
-#     df.to_csv(output_filename, index=False)
-# =============================================================================

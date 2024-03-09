@@ -2,7 +2,8 @@
 
 VENV := venv
 
-SCRIPTS_DIR := scripts
+App_DIR := App
+Src_DIR := Src
 
 install: 
 	@echo "Installing requirements..."
@@ -13,14 +14,14 @@ install:
 
 format:
 	@echo "Running Python scripts..."
-	@for script in $(wildcard $(SCRIPTS_DIR)/*.py); do \
+	@for script in $(wildcard $(App_DIR)/*.py); do \
 		echo "Executing $$script"; \
 		black $$script; \
 	done
 
 lint:
 	@echo "Running Python scripts..."
-	@for script in $(wildcard $(SCRIPTS_DIR)/*.py); do \
+	@for script in $(wildcard $(App_DIR)/*.py); do \
 		echo "Executing $$script"; \
 		flake8 $$script --count --select=E9,F63,F7,F82 --show-source --statistics; \
 		flake8 $$script --count --exit-zero --max-complexity=10 --max-line-length=100 --statistics; \
@@ -28,16 +29,9 @@ lint:
 
 security:
 	@echo "Running Python scripts..."
-	@for script in $(wildcard $(SCRIPTS_DIR)/*.py); do \
+	@for script in $(wildcard $(App_DIR)/*.py); do \
 		echo "Executing $$script"; \
 		bandit -r $$script --tests B101; \
-	done
-
-run-scripts:
-	@echo "Running Python scripts..."
-	@for script in $(wildcard $(SCRIPTS_DIR)/*.py); do \
-		echo "Executing $$script"; \
-		python $$script; \
 	done
 
 clean:
@@ -45,6 +39,6 @@ clean:
 	find . -type f -name '*.pyc' -delete
 
 streamlit: 
-	python -m streamlit run news_app/app.py
+	python -m streamlit run App/streamlit.py
 
-all: install format lint security run-scripts clean streamlit
+all: install format lint security clean streamlit
