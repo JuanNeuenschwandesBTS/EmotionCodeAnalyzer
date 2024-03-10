@@ -1,3 +1,15 @@
+# Financial News Classifier
+
+![python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![git](https://img.shields.io/badge/GIT-E44C30?style=for-the-badge&logo=git&logoColor=white)
+![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?style=for-the-badge&logo=Streamlit&logoColor=white)
+![Hugging Face](https://img.shields.io/badge/Hugging%20Face-F9AB00?style=for-the-badge&logo=HuggingFace&logoColor=white)
+![markdown](https://img.shields.io/badge/Markdown-000000?style=for-the-badge&logo=markdown&logoColor=white)
+![Jupyter](https://img.shields.io/badge/Jupyter-F37626?style=for-the-badge&logo=Jupyter&logoColor=white)
+![CSS](https://img.shields.io/badge/CSS-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+![terminal](https://img.shields.io/badge/windows%20terminal-4D4D4D?style=for-the-badge&logo=windows%20terminal&logoColor=white)
+
+
 # Credentials
 
 For security reason the key for the API is not uploaded in the repository.
@@ -76,9 +88,9 @@ This model used TF-IDF for feature extraction and Logistic Regression for classi
 
 Another baseline model employed Word2Vec for feature extraction and Logistic Regression for classification, aiming to capture semantic meaning more effectively. It addressed the convergence issue by potentially increasing the number of iterations or adjusting the model's regularization strength.
 
-### SVC Model: Sentiment Analysis
+### SVM Model: Sentiment Analysis
 
-The SVC model with a linear kernel was trained on the Financial Phrasebank data, achieving precision scores of approximately 0.786 for neutral, 0.694 for negative, and 0.760 for positive sentiments.
+The SVM model with a linear kernel was trained on the Financial Phrasebank data, achieving precision scores of approximately 0.786 for neutral, 0.694 for negative, and 0.760 for positive sentiments.
 
 ### BERT Fine-Tuning Model
 
@@ -90,3 +102,34 @@ The model was initialized with the `bert-base-uncased` pre-trained model and fin
 
 Throughout the project, various models were evaluated, including logistic regression with TF-IDF and Word2Vec features, an SVM classifier, and a fine-tuning of a BERT model. The evaluation process highlighted the importance of feature extraction techniques and model choice in financial sentiment analysis, with each model offering insights into the challenges and opportunities in classifying financial sentiments accurately.
 
+
+## Getting Started
+
+To run the application on your local machine:
+
+1. Clone the repository:
+   ```sh
+   git clone https://github.com/JuanNeuenschwandesBTS/EmotionCodeAnalyzer.git
+   ```
+
+2. Navigate to the cloned directory and make file to install the dependencies and run the scripts:
+   ```sh
+   cd EmotionCodeAnalyzer
+   ```
+
+3. Install requirements, run the script to populate the database and start the Streamlit server by running:
+   ```sh
+   make all
+
+   ```
+
+## Contribution
+This app was developed by [John Omole](https://github.com/JohnOMDev), [Juan Neunenschwander](https://github.com/JuanNeuenschwandesBTS), [Ciaran Fox](https://github.com/Ciaranfox). We welcome contributions from the community!
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE.md file for details.
+
+## Contact
+
+If you have any questions or comments about the application, please open an issue in this repository.

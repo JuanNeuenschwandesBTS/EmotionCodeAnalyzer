@@ -28,9 +28,7 @@ from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
 import re
 
-nltk.download("wordnet")
-nltk.download("stopwords")
-nltk.download("punkt")
+
 #! only uncommend if modules are not installed
 # * nltk.download("punkt")
 # * nltk.download("stopwords")
@@ -120,6 +118,10 @@ if __name__ == "__main__":
     df_tweet_topic_train = pd.read_csv("Data/Raw/topic_train.csv")
     df_tweet_topic_valid = pd.read_csv("Data/Raw/topic_valid.csv")
     df_fin_phrase = pd.read_csv("Data/Raw/fin_phrase_bank.csv")
+    df_fin_phrase["clean_text"] = df_fin_phrase['sentence'].apply(
+        preprocess_text
+    )
+    
     df_tweet_topic_train["clean_text"] = df_tweet_topic_train["text"].apply(
         preprocess_text
     )
