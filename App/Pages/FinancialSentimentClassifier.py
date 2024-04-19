@@ -29,6 +29,9 @@ def page_sentiment_classifier():
     st.title("Financial Sentiment App developed by Juan, Ciaran and John")
 
 
+    tweet = st.text_area("Enter a tweet:", "")
+
+
     def get_news_api():
         df = financial_news.fetch_yahoo_news()
         df["label"] = df["description"].apply(lambda x: pipe(x)[0].get("label"))
@@ -39,13 +42,12 @@ def page_sentiment_classifier():
     selection = st.radio(
         "Select option: ",
         [
-            "Provide a Financial Statement for Sentiment Analysis",
-            "Get News of the Day Sentiment and the sentiment",
+            "Get News of the Day Sentiment",
+            "Provide a Financial Statement",
         ],
     )
 
     if selection == "Provide a Financial Statement":
-        tweet = st.text_area("Enter a tweet:", "")
         button_clicked = st.button("Submit")
         if button_clicked and tweet is not None:
             outputs = pipe(tweet)
@@ -54,8 +56,6 @@ def page_sentiment_classifier():
             st.write(f"The Sentiment is: {outputs[0].get('label')}")
             st.write(f"The Confidence is: {outputs[0].get('score')}")
     if selection == "Get News of the Day Sentiment":
-        with st.spinner("Loading..."):
+        button_clicked = st.button("Submit")
+        if button_clicked and tweet is not None:
             get_news_api()
-        # button_clicked = st.button("Submit")
-        # if button_clicked:
-        # get_news_api()
