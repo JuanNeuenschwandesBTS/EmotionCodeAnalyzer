@@ -1,14 +1,11 @@
 import requests
 import pandas as pd
-import configparser
-
-config = configparser.ConfigParser()
-config.read("./App/cred.cfg")
-
+import os
+import streamlit as st
 
 class NewApis:
     def __init__(self):
-        self.api_key = config["api"]["api_key_id"]
+        self.api_key = st.secret["api_key_id"]
 
     def fetch_yahoo_news(self):
         query = "Financial News"  # You can replace this query with your desired search query
