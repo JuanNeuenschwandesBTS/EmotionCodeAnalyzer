@@ -9,7 +9,7 @@ def main():
     selection = 'Welcome'
     st.sidebar.title('Menu')
     selection = st.sidebar.radio('Go to', ['Welcome','Sentiment Classifier'])
-    if selection == 'welcome':  
+    if selection == 'Welcome':  
         welcome()
     elif selection == 'Sentiment Classifier':
         with st.spinner('Loading...'):
