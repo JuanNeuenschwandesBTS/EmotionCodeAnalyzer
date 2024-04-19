@@ -42,11 +42,9 @@ def page_sentiment_classifier():
     selection = st.radio(
         "Select option: ",
         [
-            "Get News of the Day Sentiment",
-            "Provide a Financial Statement",
-        ],
-    )
-
+            "Provide a Financial Statement and get the sentiment.",
+            "Get News of the Day Sentimen and the sentiments.",
+        ])
     if selection == "Provide a Financial Statement":
         button_clicked = st.button("Submit")
         if button_clicked and tweet is not None:
@@ -56,6 +54,8 @@ def page_sentiment_classifier():
             st.write(f"The Sentiment is: {outputs[0].get('label')}")
             st.write(f"The Confidence is: {outputs[0].get('score')}")
     if selection == "Get News of the Day Sentiment":
-        button_clicked = st.button("Submit")
-        if button_clicked and tweet is not None:
+        with st.spinner("Loading..."):
+        #    get_news_api()
+        # button_clicked = st.button("Submit")
+        # if button_clicked and tweet is not None:
             get_news_api()
