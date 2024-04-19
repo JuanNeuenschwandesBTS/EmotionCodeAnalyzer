@@ -45,7 +45,7 @@ def page_sentiment_classifier():
             "Provide a Financial Statement and Get The Sentiment.",
             "Get News of the Day  and Their Sentiments.",
         ])
-    if selection == "Provide a Financial Statement":
+    if selection == "Provide a Financial Statement and Get The Sentiment.":
         tweet = st.text_area("Enter a tweet:", "")
         button_clicked = st.button("Submit")
         if button_clicked and tweet is not None:
@@ -54,10 +54,9 @@ def page_sentiment_classifier():
             # Display the prediction
             st.write(f"The Sentiment is: {outputs[0].get('label')}")
             st.write(f"The Confidence is: {outputs[0].get('score')}")
-    if selection == "Get News of the Day Sentiment":
-        get_news_api()
-        # with st.spinner("Loading..."):
-        #    get_news_api()
+    if selection == "Get News of the Day  and Their Sentiments.":
+        with st.spinner("Loading..."):
+            get_news_api()
         # button_clicked = st.button("Submit")
         # if button_clicked and tweet is not None:
         
