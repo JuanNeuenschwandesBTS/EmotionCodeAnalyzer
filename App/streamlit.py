@@ -6,9 +6,9 @@ import time
 def main():
     
     
-    selection = 'welcome'
+    selection = 'Welcome'
     st.sidebar.title('Menu')
-    selection = st.sidebar.radio('Go to', ['welcome','Sentiment Classifier'])
+    selection = st.sidebar.radio('Go to', ['Welcome','Sentiment Classifier'])
     if selection == 'welcome':  
         welcome()
     elif selection == 'Sentiment Classifier':
