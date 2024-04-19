@@ -54,6 +54,8 @@ def page_sentiment_classifier():
             st.write(f"The Sentiment is: {outputs[0].get('label')}")
             st.write(f"The Confidence is: {outputs[0].get('score')}")
     if selection == "Get News of the Day Sentiment":
-        button_clicked = st.button("Submit")
-        if button_clicked:
+        with st.spinner("Loading..."):
             get_news_api()
+        # button_clicked = st.button("Submit")
+        # if button_clicked:
+        # get_news_api()
