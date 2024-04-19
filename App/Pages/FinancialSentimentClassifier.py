@@ -39,8 +39,8 @@ def page_sentiment_classifier():
     selection = st.radio(
         "Select option: ",
         [
-            "Get News of the Day Sentiment and the sentiment",
             "Provide a Financial Statement for Sentiment Analysis",
+            "Get News of the Day Sentiment and the sentiment",
         ],
     )
 
