@@ -5,7 +5,7 @@ import streamlit as st
 
 class NewApis:
     def __init__(self):
-        self.api_key = st.secret["api_key_id"]
+        self.api_key = st.secrets["api_key_id"]
 
     def fetch_yahoo_news(self):
         query = "Financial News"  # You can replace this query with your desired search query
